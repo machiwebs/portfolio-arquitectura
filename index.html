@@ -1,0 +1,1447 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silvina Castro Arquitecta — Obras</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1EC;
+    --paper-dim:#ECE8E1;
+    --ink:#1B1916;
+    --ink-soft:#4B463F;
+    --greige:#A79C8C;
+    --stone:#6E756F;
+    --copper:#A9713F;
+    --line: rgba(27,25,22,0.14);
+    --line-strong: rgba(27,25,22,0.28);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Mono', monospace;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.serif{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    letter-spacing:-0.01em;
+  }
+
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+  .label{
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  a{color:inherit;}
+  ::selection{ background:var(--ink); color:var(--paper); }
+
+  /* ---------- layout shell ---------- */
+  .shell{
+    display:grid;
+    grid-template-columns: 280px 1fr;
+    min-height:100vh;
+  }
+
+  /* ---------- sidebar ---------- */
+  .sidebar{
+    position:sticky;
+    top:0;
+    height:100vh;
+    border-right:1px solid var(--line);
+    padding:40px 32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    overflow:hidden;
+  }
+
+  .sidebar-top{ display:flex; flex-direction:column; min-height:0; flex:1 1 auto; overflow:hidden; }
+
+  .nav-toggle{ display:none; }
+
+  .brand{ display:flex; flex-direction:column; gap:6px; }
+  .brand .mark{ font-family:'Fraunces', serif; font-size:28px; letter-spacing:-0.02em; }
+  .brand .sub{ font-size:10.5px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ink-soft); }
+
+  .index-list{ margin-top:64px; display:flex; flex-direction:column; gap:2px; overflow-y:auto; flex:1 1 auto; min-height:0; padding-right:10px; scrollbar-width:thin; scrollbar-color:var(--line-strong) transparent; }
+  .index-list::-webkit-scrollbar{ width:5px; }
+  .index-list::-webkit-scrollbar-thumb{ background:var(--line-strong); border-radius:4px; }
+  .index-list::-webkit-scrollbar-track{ background:transparent; }
+  .index-list .index-title{
+    font-size:10.5px; letter-spacing:0.18em; text-transform:uppercase; color:var(--greige); margin-bottom:14px;
+  }
+  .index-item{
+    display:flex; align-items:baseline; gap:12px; padding:10px 0;
+    border-top:1px solid var(--line); text-decoration:none; cursor:pointer;
+  }
+  .index-item:first-of-type{border-top:none;}
+  .index-item .num{ font-size:11px; color:var(--greige); }
+  .index-item .place{ display:flex; flex-direction:column; gap:2px; }
+  .index-item .place .name{ font-family:'Fraunces', serif; font-size:16px; }
+  .index-item .place .addr{ font-size:10px; color:var(--ink-soft); letter-spacing:0.02em; }
+  .index-item.upcoming{ opacity:0.38; cursor:default; }
+
+  .sidebar-foot{ display:flex; flex-direction:column; gap:18px; }
+  .credit{ display:flex; flex-direction:column; gap:4px; padding-top:16px; border-top:1px solid var(--line); }
+  .credit .who{ font-family:'Fraunces', serif; font-size:14px; }
+  .credit .tel{ font-size:10.5px; color:var(--ink-soft); letter-spacing:0.03em; }
+  .credit .tel a{ text-decoration:none; border-bottom:1px solid var(--line-strong); }
+  .sidebar-foot .coords{ font-size:10px; color:var(--greige); letter-spacing:0.04em; }
+
+  /* ---------- main ---------- */
+  main{ min-width:0; }
+
+  .intro{
+    padding:48px 64px 40px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .intro .dot{ width:6px;height:6px;border-radius:50%; background:var(--copper); flex-shrink:0; }
+
+  /* ---------- plaque (obra header) ---------- */
+  .plaque{
+    padding:88px 64px 56px;
+    border-bottom:1px solid var(--line);
+    display:grid;
+    grid-template-columns: auto 1fr;
+    gap:40px;
+    align-items:end;
+  }
+  .plaque .plate-num{
+    font-family:'Fraunces', serif; font-size:120px; line-height:0.8; font-weight:300;
+    color:transparent; -webkit-text-stroke: 1px var(--ink);
+  }
+  .plaque .plate-info{ padding-bottom:8px; }
+  main > article:first-of-type .plaque{ padding-top:130px; }
+  .plaque .plate-info .addr{
+    font-family:'Fraunces', serif; font-size:clamp(28px,3.4vw,44px); font-weight:400; margin:0 0 10px;
+  }
+  .plaque .plate-info .meta{ display:flex; flex-wrap:wrap; gap:28px; margin-top:22px; }
+  .plaque .plate-info .meta div{ display:flex; flex-direction:column; gap:4px; }
+  .plaque .plate-info .meta .k{ font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--greige); }
+  .plaque .plate-info .meta .v{ font-size:13px; color:var(--ink-soft); }
+
+  /* ---------- category section ---------- */
+  .category{ padding:64px 64px 8px; border-bottom:1px solid var(--line); }
+  .category-head{
+    display:flex; align-items:baseline; justify-content:space-between; margin-bottom:36px; gap:20px;
+  }
+  .category-head h2{ font-size:26px; font-weight:400; margin:0; }
+  .category-head .count{ font-size:10.5px; letter-spacing:0.14em; text-transform:uppercase; color:var(--greige); white-space:nowrap; }
+
+  .grid{ display:grid; grid-template-columns: repeat(12, 1fr); gap:20px; padding-bottom:56px; }
+  .frame{
+    position:relative; overflow:hidden; cursor:zoom-in; background:var(--paper-dim);
+    opacity:0; transform:translateY(22px); transition:opacity 900ms ease, transform 900ms ease;
+  }
+  .frame.in{ opacity:1; transform:translateY(0); }
+  .frame img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    transition:transform 900ms cubic-bezier(.2,.7,.2,1), filter 900ms ease; filter:grayscale(14%);
+  }
+  .frame:hover img{ transform:scale(1.045); filter:grayscale(0%); }
+  .frame .cap{
+    position:absolute; left:0; right:0; bottom:0; padding:14px 16px;
+    display:flex; justify-content:space-between; align-items:flex-end;
+    background:linear-gradient(to top, rgba(20,18,15,0.62), rgba(20,18,15,0));
+    opacity:0; transition:opacity 400ms ease;
+  }
+  .frame:hover .cap{ opacity:1; }
+  .frame .cap .t{ color:#F4F1EC; font-size:11px; letter-spacing:0.06em; }
+  .frame .cap .i{ color:#cfc8ba; font-size:10px; }
+
+  .frame.w7{ grid-column: span 7; aspect-ratio: 4/3; }
+  .frame.w5{ grid-column: span 5; aspect-ratio: 3/4; }
+  .frame.w6{ grid-column: span 6; aspect-ratio: 4/5; }
+  .frame.w4{ grid-column: span 4; aspect-ratio: 3/4; }
+  .frame.w8{ grid-column: span 8; aspect-ratio: 16/9; }
+  .frame.w12{ grid-column: span 12; aspect-ratio: 21/9; }
+  .frame.w3{ grid-column: span 3; aspect-ratio: 3/4; }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:70px 64px 60px;
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+  }
+  footer .fcredit{ display:flex; flex-direction:column; gap:6px; }
+  footer .fcredit .fmark{ font-family:'Fraunces', serif; font-size:22px; }
+  footer .fcredit .fwho{ font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft); }
+  footer .fcredit .fwho a{ text-decoration:none; border-bottom:1px solid var(--line-strong); }
+  footer .fnote{ font-size:10.5px; color:var(--greige); letter-spacing:0.06em; max-width:34ch; line-height:1.7; text-align:right; }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; background:rgba(15,14,12,0.96); display:none;
+    align-items:center; justify-content:center; z-index:100; flex-direction:column;
+  }
+  .lightbox.open{ display:flex; }
+  .lightbox img{ max-width:88vw; max-height:78vh; object-fit:contain; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+  .lightbox .lb-bar{
+    position:absolute; top:0; left:0; right:0; display:flex; justify-content:space-between;
+    align-items:center; padding:24px 32px; color:#EDE8DF; font-size:11px; letter-spacing:0.1em;
+  }
+  .lightbox .lb-bar .close{
+    cursor:pointer; border:1px solid rgba(237,232,223,0.3); padding:8px 14px;
+    text-transform:uppercase; font-size:10px; letter-spacing:0.14em;
+  }
+  .lightbox .lb-bar .close:hover{ background:rgba(237,232,223,0.1); }
+  .lightbox .lb-caption{ margin-top:22px; color:#cfc8ba; font-size:11px; letter-spacing:0.04em; text-align:center; }
+  .lightbox .nav{
+    position:absolute; top:0; bottom:0; width:15%; display:flex; align-items:center;
+    cursor:pointer; color:#EDE8DF; font-size:22px; opacity:0.35; transition:opacity 200ms ease;
+  }
+  .lightbox .nav:hover{ opacity:0.9; }
+  .lightbox .nav.prev{ left:0; justify-content:flex-start; padding-left:24px; }
+  .lightbox .nav.next{ right:0; justify-content:flex-end; padding-right:24px; }
+
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity 800ms ease, transform 800ms ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- mobile ---------- */
+  @media (max-width: 980px){
+    .shell{ grid-template-columns: 1fr; }
+    .sidebar{
+      position:sticky; top:0; z-index:60;
+      height:auto; flex-direction:row; align-items:center; justify-content:space-between;
+      padding:18px 24px; border-right:none; border-bottom:1px solid var(--line);
+      overflow:visible; background:var(--paper);
+    }
+    .sidebar-top{ flex-direction:row; align-items:center; flex:0 0 auto; overflow:visible; }
+    .brand{ gap:2px; }
+    .brand .mark{ font-size:20px; }
+    .index-list{ display:none; }
+    .sidebar-foot{ display:none; }
+
+    .nav-toggle{
+      display:inline-flex; align-items:center; gap:8px;
+      background:none; border:1px solid var(--line-strong); border-radius:999px;
+      padding:9px 16px; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase;
+      color:var(--ink); cursor:pointer; font-family:inherit;
+    }
+    .nav-toggle .chev{ transition:transform 200ms ease; font-size:9px; }
+
+    .sidebar.nav-open{ align-items:flex-start; }
+    .sidebar.nav-open .nav-toggle .chev{ transform:rotate(180deg); }
+    .sidebar.nav-open .index-list{
+      display:flex; flex-direction:column; gap:2px;
+      position:absolute; top:100%; left:0; right:0;
+      max-height:calc(100vh - 64px); overflow-y:auto;
+      background:var(--paper); border-bottom:1px solid var(--line);
+      padding:8px 24px 28px; margin-top:0;
+    }
+
+    .intro{ padding:32px 24px; }
+    .plaque{ padding:56px 24px 40px; grid-template-columns: 1fr; gap:18px; }
+    .plaque .plate-num{ font-size:64px; }
+    .category{ padding:48px 24px 8px; }
+    .grid{ grid-template-columns: repeat(6,1fr); gap:12px; }
+    .frame.w7,.frame.w5,.frame.w6,.frame.w4,.frame.w8,.frame.w3{ grid-column: span 6; aspect-ratio: 4/3; }
+    .frame.w12{ grid-column: span 6; aspect-ratio: 4/3; }
+    footer{ padding:48px 24px 40px; flex-direction:column; align-items:flex-start; }
+    footer .fnote{ text-align:left; }
+    .lightbox .nav{ width:20%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="mark">Silvina Castro</div>
+        <div class="sub">Arquitecta · Obras</div>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false">
+        <span>Índice</span><span class="chev">▾</span>
+      </button>
+
+      <nav class="index-list">
+        <div class="index-title">Domicilios</div>
+        <a class="index-item" href="#obra-01">
+          <span class="num mono">01</span>
+          <span class="place">
+            <span class="name serif">Dr. Melo</span>
+            <span class="addr mono">Vivienda unifamiliar · Calle Dr. Melo</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-02">
+          <span class="num mono">02</span>
+          <span class="place">
+            <span class="name serif">Mármol</span>
+            <span class="addr mono">Vivienda unifamiliar · Calle Mármol</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-03">
+          <span class="num mono">03</span>
+          <span class="place">
+            <span class="name serif">Choele Choel</span>
+            <span class="addr mono">Oficina · Calle Choele Choel</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-04">
+          <span class="num mono">04</span>
+          <span class="place">
+            <span class="name serif">2 De Mayo</span>
+            <span class="addr mono">Vivienda unifamiliar · Calle 2 De Mayo</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-05">
+          <span class="num mono">05</span>
+          <span class="place">
+            <span class="name serif">Catamarca</span>
+            <span class="addr mono">Departamento · Calle Catamarca</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-06">
+          <span class="num mono">06</span>
+          <span class="place">
+            <span class="name serif">Saavedra</span>
+            <span class="addr mono">Vivienda unifamiliar · Calle Saavedra</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-07">
+          <span class="num mono">07</span>
+          <span class="place">
+            <span class="name serif">Juan D. Perón</span>
+            <span class="addr mono">Galpón · Calle Juan D. Perón</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-08">
+          <span class="num mono">08</span>
+          <span class="place">
+            <span class="name serif">Warnes</span>
+            <span class="addr mono">Dúplex · Calle Warnes</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-09">
+          <span class="num mono">09</span>
+          <span class="place">
+            <span class="name serif">Lertora</span>
+            <span class="addr mono">Vivienda unifamiliar · Calle Lertora</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-10">
+          <span class="num mono">10</span>
+          <span class="place">
+            <span class="name serif">Enrique Fernández</span>
+            <span class="addr mono">Dúplex · Calle Enrique Fernández</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-11">
+          <span class="num mono">11</span>
+          <span class="place">
+            <span class="name serif">Juan D. Perón</span>
+            <span class="addr mono">Showroom · Calle Juan D. Perón</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-12">
+          <span class="num mono">12</span>
+          <span class="place">
+            <span class="name serif">Chaco</span>
+            <span class="addr mono">Galpón y vivienda · Calle Chaco</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-13">
+          <span class="num mono">13</span>
+          <span class="place">
+            <span class="name serif">Santiago Plaul y Guadalupe</span>
+            <span class="addr mono">Galpón y vivienda multifamiliar · Calle Santiago Plaul y Guadalupe</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-14">
+          <span class="num mono">14</span>
+          <span class="place">
+            <span class="name serif">Julián Lagos</span>
+            <span class="addr mono">Vivienda multifamiliar · Julián Lagos y República Argentina</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-15">
+          <span class="num mono">15</span>
+          <span class="place">
+            <span class="name serif">Santiago Plaul</span>
+            <span class="addr mono">Galpón y vivienda · Calle Santiago Plaul</span>
+          </span>
+        </a>
+        <a class="index-item" href="#obra-16">
+          <span class="num mono">16</span>
+          <span class="place">
+            <span class="name serif">Warnes</span>
+            <span class="addr mono">Vivienda multifamiliar · Calle Warnes</span>
+          </span>
+        </a>
+      </nav>
+    </div>
+
+    <div class="sidebar-foot">
+      <div class="coords mono">BUENOS AIRES · AR</div>
+      <div class="credit">
+        <div class="who serif">Arquitecta Silvina Castro</div>
+        <div class="tel mono"><a href="tel:+541140497401">+54 11 4049-7401</a></div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN ================= -->
+  <main>
+
+    <!-- ============ OBRA 01 ============ -->
+    <article id="obra-01">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">01</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Dr. Melo</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda unifamiliar, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Hormigón visto, madera, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">8 categorías · 15 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">01 — 02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w5" data-full="images/dr-melo/dr-melo-01.jpg" data-cap="Frente sobre la calle · portón de chapa negra y puerta de acceso">
+            <img src="images/dr-melo/dr-melo-01.jpg" alt="Frente de la vivienda sobre la calle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w7" data-full="images/dr-melo/dr-melo-02.jpg" data-cap="Contrafrente · hormigón visto, parasoles de madera y patio">
+            <img src="images/dr-melo/dr-melo-02.jpg" alt="Contrafrente en hormigón visto" loading="lazy">
+            <div class="cap"><span class="t mono">Contrafrente</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTAR -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Estar</h2>
+          <span class="count mono">03 — 07</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/dr-melo/dr-melo-03.jpg" data-cap="Estar de doble altura · luminarias circulares y escalera de madera suspendida">
+            <img src="images/dr-melo/dr-melo-03.jpg" alt="Estar de doble altura con luminarias circulares" loading="lazy">
+            <div class="cap"><span class="t mono">Doble altura</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w5" data-full="images/dr-melo/dr-melo-04.jpg" data-cap="Vista general del estar · cocina integrada al fondo">
+            <img src="images/dr-melo/dr-melo-04.jpg" alt="Vista general del estar con cocina integrada" loading="lazy">
+            <div class="cap"><span class="t mono">Estar y cocina</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w4" data-full="images/dr-melo/dr-melo-05.jpg" data-cap="Galería en planta alta · baranda de hierro y pasamanos de madera">
+            <img src="images/dr-melo/dr-melo-05.jpg" alt="Galería en planta alta" loading="lazy">
+            <div class="cap"><span class="t mono">Galería alta</span><span class="i mono">05</span></div>
+          </div>
+          <div class="frame w4" data-full="images/dr-melo/dr-melo-06.jpg" data-cap="Planta alta · conducto de estufa a leña en chapa negra">
+            <img src="images/dr-melo/dr-melo-06.jpg" alt="Planta alta con conducto de estufa a leña" loading="lazy">
+            <div class="cap"><span class="t mono">Planta alta</span><span class="i mono">06</span></div>
+          </div>
+          <div class="frame w4" data-full="images/dr-melo/dr-melo-07.jpg" data-cap="Living integrado a la cocina · acceso al patio con parquización">
+            <img src="images/dr-melo/dr-melo-07.jpg" alt="Living integrado a la cocina con acceso al patio" loading="lazy">
+            <div class="cap"><span class="t mono">Living</span><span class="i mono">07</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESCALERA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Escalera</h2>
+          <span class="count mono">08</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/dr-melo/dr-melo-08.jpg" data-cap="Escalera flotante · escalones de madera maciza sobre estructura metálica">
+            <img src="images/dr-melo/dr-melo-08.jpg" alt="Escalera flotante de madera" loading="lazy">
+            <div class="cap"><span class="t mono">Escalera flotante</span><span class="i mono">08</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COCINA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Cocina</h2>
+          <span class="count mono">09 — 10</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/dr-melo/dr-melo-09.jpg" data-cap="Isla central · frente en lamas de madera y mesada blanca">
+            <img src="images/dr-melo/dr-melo-09.jpg" alt="Cocina con isla de lamas de madera" loading="lazy">
+            <div class="cap"><span class="t mono">Isla central</span><span class="i mono">09</span></div>
+          </div>
+          <div class="frame w5" data-full="images/dr-melo/dr-melo-10.jpg" data-cap="Bajomesada y heladera · ventana pivotante en negro">
+            <img src="images/dr-melo/dr-melo-10.jpg" alt="Bajomesada y heladera" loading="lazy">
+            <div class="cap"><span class="t mono">Bajomesada</span><span class="i mono">10</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DORMITORIO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Dormitorio</h2>
+          <span class="count mono">11</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/dr-melo/dr-melo-11.jpg" data-cap="Dormitorio principal · placard a medida con iluminación sobre riel">
+            <img src="images/dr-melo/dr-melo-11.jpg" alt="Dormitorio con placard a medida" loading="lazy">
+            <div class="cap"><span class="t mono">Dormitorio</span><span class="i mono">11</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAÑOS -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Baños</h2>
+          <span class="count mono">12 — 13</span>
+        </div>
+        <div class="grid">
+          <div class="frame w5" data-full="images/dr-melo/dr-melo-12.jpg" data-cap="Mesada en terrazo verde · acceso a vestidor en madera">
+            <img src="images/dr-melo/dr-melo-12.jpg" alt="Mesada en terrazo verde" loading="lazy">
+            <div class="cap"><span class="t mono">Mesada terrazo</span><span class="i mono">12</span></div>
+          </div>
+          <div class="frame w7" data-full="images/dr-melo/dr-melo-13.jpg" data-cap="Ducha · cabina de vidrio esquinera con herrajes en negro">
+            <img src="images/dr-melo/dr-melo-13.jpg" alt="Ducha con cabina de vidrio esquinera" loading="lazy">
+            <div class="cap"><span class="t mono">Ducha</span><span class="i mono">13</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LAVADERO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Lavadero</h2>
+          <span class="count mono">14</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/dr-melo/dr-melo-14.jpg" data-cap="Lavadero · muebles a medida y pileta con mesada en granito reciclado">
+            <img src="images/dr-melo/dr-melo-14.jpg" alt="Lavadero con muebles a medida" loading="lazy">
+            <div class="cap"><span class="t mono">Lavadero</span><span class="i mono">14</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUINCHO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Quincho</h2>
+          <span class="count mono">15</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/dr-melo/dr-melo-15.jpg" data-cap="Parrilla empotrada · campana en chapa negra y alacenas de servicio">
+            <img src="images/dr-melo/dr-melo-15.jpg" alt="Parrilla empotrada con campana negra" loading="lazy">
+            <div class="cap"><span class="t mono">Parrilla</span><span class="i mono">15</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- ============ OBRA 02 ============ -->
+    <article id="obra-02">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">02</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Mármol</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda unifamiliar, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Piedra laja, mármol, hierro, madera</span></div>
+            <div><span class="k">Ambientes</span><span class="v">5 categorías · 18 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">01 — 03</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/marmol/marmol-01.jpg" data-cap="Frente sobre la calle · portones y puerta de acceso en negro">
+            <img src="images/marmol/marmol-01.jpg" alt="Frente de la vivienda sobre la calle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/marmol/marmol-02.jpg" data-cap="Patio interior · revestimiento en piedra laja y baranda vidriada">
+            <img src="images/marmol/marmol-02.jpg" alt="Patio interior con revestimiento en piedra laja" loading="lazy">
+            <div class="cap"><span class="t mono">Patio interior</span><span class="i mono">02</span></div>
+          </div>
+          <div class="frame w12" data-full="images/marmol/marmol-03.jpg" data-cap="Contrafrente · balcón vidriado, pérgola de madera y estar integrado">
+            <img src="images/marmol/marmol-03.jpg" alt="Vista de contrafrente con balcón y pérgola" loading="lazy">
+            <div class="cap"><span class="t mono">Contrafrente</span><span class="i mono">03</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTAR / LIVING -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Estar</h2>
+          <span class="count mono">04 — 11</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/marmol/marmol-04.jpg" data-cap="Estar de doble altura · muro a mármol y luminarias colgantes">
+            <img src="images/marmol/marmol-04.jpg" alt="Estar de doble altura" loading="lazy">
+            <div class="cap"><span class="t mono">Doble altura</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w6" data-full="images/marmol/marmol-05.jpg" data-cap="Hogar revestido en mármol · detalle de iluminación empotrada">
+            <img src="images/marmol/marmol-05.jpg" alt="Hogar revestido en mármol" loading="lazy">
+            <div class="cap"><span class="t mono">Hogar</span><span class="i mono">05</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-06.jpg" data-cap="Hall en planta alta · escalera de mármol y luminarias tejidas">
+            <img src="images/marmol/marmol-06.jpg" alt="Hall en planta alta con escalera" loading="lazy">
+            <div class="cap"><span class="t mono">Hall superior</span><span class="i mono">06</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-07.jpg" data-cap="Escalera principal · escalones de mármol con iluminación embutida">
+            <img src="images/marmol/marmol-07.jpg" alt="Escalera principal de mármol" loading="lazy">
+            <div class="cap"><span class="t mono">Escalera</span><span class="i mono">07</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-08.jpg" data-cap="Estar ampliado en planta baja · cielorraso con cenefa e iluminación">
+            <img src="images/marmol/marmol-08.jpg" alt="Estar ampliado en planta baja" loading="lazy">
+            <div class="cap"><span class="t mono">Estar PB</span><span class="i mono">08</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-09.jpg" data-cap="Sala de estar">
+            <img src="images/marmol/marmol-09.jpg" alt="Sala de estar" loading="lazy">
+            <div class="cap"><span class="t mono">Sala de estar</span><span class="i mono">09</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-10.jpg" data-cap="Comedor">
+            <img src="images/marmol/marmol-10.jpg" alt="Comedor" loading="lazy">
+            <div class="cap"><span class="t mono">Comedor</span><span class="i mono">10</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-11.jpg" data-cap="Comedor y estar">
+            <img src="images/marmol/marmol-11.jpg" alt="Comedor y estar" loading="lazy">
+            <div class="cap"><span class="t mono">Comedor y estar</span><span class="i mono">11</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COCINA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Cocina</h2>
+          <span class="count mono">12</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/marmol/marmol-12.jpg" data-cap="Cocina en 'U' · bajomesada blanco laqueado y alacenas en madera natural">
+            <img src="images/marmol/marmol-12.jpg" alt="Cocina integrada en U" loading="lazy">
+            <div class="cap"><span class="t mono">Cocina</span><span class="i mono">12</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAÑOS -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Baños</h2>
+          <span class="count mono">13 — 16</span>
+        </div>
+        <div class="grid">
+          <div class="frame w5" data-full="images/marmol/marmol-13.jpg" data-cap="Ducha · revestimiento símil madera y mampara de vidrio templado">
+            <img src="images/marmol/marmol-13.jpg" alt="Ducha con revestimiento símil madera" loading="lazy">
+            <div class="cap"><span class="t mono">Ducha</span><span class="i mono">13</span></div>
+          </div>
+          <div class="frame w3" data-full="images/marmol/marmol-14.jpg" data-cap="Vanitory · bacha sobre mesada y grifería monocomando cromada">
+            <img src="images/marmol/marmol-14.jpg" alt="Vanitory con bacha sobre mesada" loading="lazy">
+            <div class="cap"><span class="t mono">Vanitory</span><span class="i mono">14</span></div>
+          </div>
+          <div class="frame w4" data-full="images/marmol/marmol-15.jpg" data-cap="Bacha e inodoro · revestimiento símil madera hasta el techo">
+            <img src="images/marmol/marmol-15.jpg" alt="Bacha e inodoro" loading="lazy">
+            <div class="cap"><span class="t mono">Sanitarios</span><span class="i mono">15</span></div>
+          </div>
+          <div class="frame w12" data-full="images/marmol/marmol-16.jpg" data-cap="Toilette de planta baja · acceso desde placard, piso símil madera">
+            <img src="images/marmol/marmol-16.jpg" alt="Toilette de planta baja" loading="lazy">
+            <div class="cap"><span class="t mono">Toilette</span><span class="i mono">16</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUINCHO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Quincho</h2>
+          <span class="count mono">17 — 18</span>
+        </div>
+        <div class="grid">
+          <div class="frame w5" data-full="images/marmol/marmol-17.jpg" data-cap="Parrilla empotrada · estructura de hierro y guarda calor en acero inoxidable">
+            <img src="images/marmol/marmol-17.jpg" alt="Parrilla empotrada en hierro" loading="lazy">
+            <div class="cap"><span class="t mono">Parrilla</span><span class="i mono">17</span></div>
+          </div>
+          <div class="frame w7" data-full="images/marmol/marmol-18.jpg" data-cap="Quincho cubierto · pérgola de lamas de madera y mesada con bacha">
+            <img src="images/marmol/marmol-18.jpg" alt="Quincho cubierto con pérgola de madera" loading="lazy">
+            <div class="cap"><span class="t mono">Quincho cubierto</span><span class="i mono">18</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <!-- ============ OBRA 03 — OFICINA ============ -->
+    <article id="obra-03">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">03</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Choele Choel</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Oficina, planta baja</span></div>
+            <div><span class="k">Materiales</span><span class="v">Porcelanato, aluminio negro, jardín vertical</span></div>
+            <div><span class="k">Ambientes</span><span class="v">3 categorías · 5 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ÁREA DE TRABAJO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Área de trabajo</h2>
+          <span class="count mono">01 — 02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/choele-choel/choele-choel-01.jpg" data-cap="Puestos de trabajo · aberturas de piso a techo hacia jardín vertical">
+            <img src="images/choele-choel/choele-choel-01.jpg" alt="Área de trabajo abierta con vista a jardín vertical" loading="lazy">
+            <div class="cap"><span class="t mono">Puestos de trabajo</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/choele-choel/choele-choel-02.jpg" data-cap="Sector de escritorios en línea · guarda calor y separadores en negro">
+            <img src="images/choele-choel/choele-choel-02.jpg" alt="Sector de escritorios en línea" loading="lazy">
+            <div class="cap"><span class="t mono">Escritorios</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SALA DE REUNIONES -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Sala de reuniones</h2>
+          <span class="count mono">03</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/choele-choel/choele-choel-03.jpg" data-cap="Sala de reuniones · mesa de madera y acceso directo al patio">
+            <img src="images/choele-choel/choele-choel-03.jpg" alt="Sala de reuniones con mesa de madera" loading="lazy">
+            <div class="cap"><span class="t mono">Sala de reuniones</span><span class="i mono">03</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OFICINAS PRIVADAS -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Oficinas privadas</h2>
+          <span class="count mono">04 — 05</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/choele-choel/choele-choel-04.jpg" data-cap="Oficina privada · mobiliario a medida y ventana interior hacia sala contigua">
+            <img src="images/choele-choel/choele-choel-04.jpg" alt="Oficina privada con mobiliario a medida" loading="lazy">
+            <div class="cap"><span class="t mono">Oficina privada</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w6" data-full="images/choele-choel/choele-choel-05.jpg" data-cap="Oficina privada · dos puestos con ventanales sobre la calle">
+            <img src="images/choele-choel/choele-choel-05.jpg" alt="Oficina privada con dos puestos de trabajo" loading="lazy">
+            <div class="cap"><span class="t mono">Oficina privada</span><span class="i mono">05</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+    <article id="obra-04">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">04</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle 2 De Mayo</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda unifamiliar, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Piedra laja, madera, vidrio, mármol</span></div>
+            <div><span class="k">Ambientes</span><span class="v">5 categorías · 14 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">05</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/2-de-mayo/2-de-mayo-01.jpg" data-cap="Frente">
+            <img src="images/2-de-mayo/2-de-mayo-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/2-de-mayo/2-de-mayo-02.jpg" data-cap="Frente, otro ángulo">
+            <img src="images/2-de-mayo/2-de-mayo-02.jpg" alt="Frente, otro ángulo" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">02</span></div>
+          </div>
+          <div class="frame w5" data-full="images/2-de-mayo/2-de-mayo-03.jpg" data-cap="Contrafrente">
+            <img src="images/2-de-mayo/2-de-mayo-03.jpg" alt="Contrafrente" loading="lazy">
+            <div class="cap"><span class="t mono">Contrafrente</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w7" data-full="images/2-de-mayo/2-de-mayo-04.jpg" data-cap="Contrafrente, detalle piedra">
+            <img src="images/2-de-mayo/2-de-mayo-04.jpg" alt="Contrafrente, detalle piedra" loading="lazy">
+            <div class="cap"><span class="t mono">Contrafrente</span><span class="i mono">04</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERIORES / ESTRUCTURA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Interiores</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-05.jpg" data-cap="Cielorraso en piedra laja">
+            <img src="images/2-de-mayo/2-de-mayo-05.jpg" alt="Cielorraso en piedra laja" loading="lazy">
+            <div class="cap"><span class="t mono">Piedra laja</span><span class="i mono">05</span></div>
+          </div>
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-06.jpg" data-cap="Pasaje con piedra y roble">
+            <img src="images/2-de-mayo/2-de-mayo-06.jpg" alt="Pasaje con piedra y roble" loading="lazy">
+            <div class="cap"><span class="t mono">Piedra y roble</span><span class="i mono">06</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTAR Y COCINA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Estar y cocina</h2>
+          <span class="count mono">03</span>
+        </div>
+        <div class="grid">
+          <div class="frame w8" data-full="images/2-de-mayo/2-de-mayo-07.jpg" data-cap="Living">
+            <img src="images/2-de-mayo/2-de-mayo-07.jpg" alt="Living" loading="lazy">
+            <div class="cap"><span class="t mono">Living</span><span class="i mono">07</span></div>
+          </div>
+          <div class="frame w4" data-full="images/2-de-mayo/2-de-mayo-08.jpg" data-cap="Comedor y barra">
+            <img src="images/2-de-mayo/2-de-mayo-08.jpg" alt="Comedor y barra" loading="lazy">
+            <div class="cap"><span class="t mono">Comedor</span><span class="i mono">08</span></div>
+          </div>
+          <div class="frame w12" data-full="images/2-de-mayo/2-de-mayo-09.jpg" data-cap="Cocina comedor">
+            <img src="images/2-de-mayo/2-de-mayo-09.jpg" alt="Cocina comedor" loading="lazy">
+            <div class="cap"><span class="t mono">Cocina comedor</span><span class="i mono">09</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAÑOS -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Baños</h2>
+          <span class="count mono">04</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-10.jpg" data-cap="Toilette en verde">
+            <img src="images/2-de-mayo/2-de-mayo-10.jpg" alt="Toilette en verde" loading="lazy">
+            <div class="cap"><span class="t mono">Toilette</span><span class="i mono">10</span></div>
+          </div>
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-11.jpg" data-cap="Ducha con bloques de vidrio">
+            <img src="images/2-de-mayo/2-de-mayo-11.jpg" alt="Ducha con bloques de vidrio" loading="lazy">
+            <div class="cap"><span class="t mono">Bloques de vidrio</span><span class="i mono">11</span></div>
+          </div>
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-12.jpg" data-cap="Vanitory">
+            <img src="images/2-de-mayo/2-de-mayo-12.jpg" alt="Vanitory" loading="lazy">
+            <div class="cap"><span class="t mono">Vanitory</span><span class="i mono">12</span></div>
+          </div>
+          <div class="frame w6" data-full="images/2-de-mayo/2-de-mayo-13.jpg" data-cap="Toilette, bacha naranja">
+            <img src="images/2-de-mayo/2-de-mayo-13.jpg" alt="Toilette, bacha naranja" loading="lazy">
+            <div class="cap"><span class="t mono">Bacha naranja</span><span class="i mono">13</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DETALLES -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Detalles</h2>
+          <span class="count mono">01</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/2-de-mayo/2-de-mayo-14.jpg" data-cap="Acceso">
+            <img src="images/2-de-mayo/2-de-mayo-14.jpg" alt="Acceso" loading="lazy">
+            <div class="cap"><span class="t mono">Acceso</span><span class="i mono">14</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-05">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">05</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Catamarca</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Departamento</span></div>
+            <div><span class="k">Materiales</span><span class="v">Cerámica patchwork, cemento alisado, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">2 categorías · 4 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BAÑO PRINCIPAL -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Baño principal</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/catamarca/catamarca-01.jpg" data-cap="Vista general">
+            <img src="images/catamarca/catamarca-01.jpg" alt="Vista general" loading="lazy">
+            <div class="cap"><span class="t mono">Vista general</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w6" data-full="images/catamarca/catamarca-02.jpg" data-cap="Ducha">
+            <img src="images/catamarca/catamarca-02.jpg" alt="Ducha" loading="lazy">
+            <div class="cap"><span class="t mono">Ducha</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BAÑO SECUNDARIO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Baño secundario</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/catamarca/catamarca-03.jpg" data-cap="Bañera y revestimiento">
+            <img src="images/catamarca/catamarca-03.jpg" alt="Bañera y revestimiento" loading="lazy">
+            <div class="cap"><span class="t mono">Bañera</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w6" data-full="images/catamarca/catamarca-04.jpg" data-cap="Vanitory y sanitarios">
+            <img src="images/catamarca/catamarca-04.jpg" alt="Vanitory y sanitarios" loading="lazy">
+            <div class="cap"><span class="t mono">Vanitory</span><span class="i mono">04</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-06">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">06</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Saavedra</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda unifamiliar, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, aluminio blanco, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 3 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">03</span>
+        </div>
+        <div class="grid">
+          <div class="frame w4" data-full="images/saavedra/saavedra-01.jpg" data-cap="Frente">
+            <img src="images/saavedra/saavedra-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w4" data-full="images/saavedra/saavedra-02.jpg" data-cap="Frente, otro ángulo">
+            <img src="images/saavedra/saavedra-02.jpg" alt="Frente, otro ángulo" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">02</span></div>
+          </div>
+          <div class="frame w4" data-full="images/saavedra/saavedra-03.jpg" data-cap="Frente, detalle">
+            <img src="images/saavedra/saavedra-03.jpg" alt="Frente, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">03</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-07">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">07</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Juan D. Perón</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Galpón industrial</span></div>
+            <div><span class="k">Materiales</span><span class="v">Estructura metálica, chapa, hormigón</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 2 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERIOR -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Interior</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/peron/peron-01.jpg" data-cap="Vista general">
+            <img src="images/peron/peron-01.jpg" alt="Vista general" loading="lazy">
+            <div class="cap"><span class="t mono">Vista general</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w6" data-full="images/peron/peron-02.jpg" data-cap="Acopio de materiales">
+            <img src="images/peron/peron-02.jpg" alt="Acopio de materiales" loading="lazy">
+            <div class="cap"><span class="t mono">Acopio de materiales</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-08">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">08</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Warnes</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Dúplex, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, aluminio, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 2 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/warnes/warnes-01.jpg" data-cap="Frente">
+            <img src="images/warnes/warnes-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/warnes/warnes-02.jpg" data-cap="Frente, detalle">
+            <img src="images/warnes/warnes-02.jpg" alt="Frente, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-09">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">09</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Lertora</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Remodelación, vivienda unifamiliar</span></div>
+            <div><span class="k">Materiales</span><span class="v">Piedra laja, deck, hormigón, césped artificial</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 5 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FONDO -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fondo</h2>
+          <span class="count mono">05</span>
+        </div>
+        <div class="grid">
+          <div class="frame w8" data-full="images/lertora/lertora-01.jpg" data-cap="Piscina y solárium">
+            <img src="images/lertora/lertora-01.jpg" alt="Piscina y solárium" loading="lazy">
+            <div class="cap"><span class="t mono">Piscina y solárium</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w4" data-full="images/lertora/lertora-02.jpg" data-cap="Jardín vertical, detalle">
+            <img src="images/lertora/lertora-02.jpg" alt="Jardín vertical, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Jardín vertical</span><span class="i mono">02</span></div>
+          </div>
+          <div class="frame w12" data-full="images/lertora/lertora-03.jpg" data-cap="Parrilla y anafe">
+            <img src="images/lertora/lertora-03.jpg" alt="Parrilla y anafe" loading="lazy">
+            <div class="cap"><span class="t mono">Parrilla y anafe</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w6" data-full="images/lertora/lertora-04.jpg" data-cap="Piscina, vista nocturna">
+            <img src="images/lertora/lertora-04.jpg" alt="Piscina, vista nocturna" loading="lazy">
+            <div class="cap"><span class="t mono">Vista nocturna</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w6" data-full="images/lertora/lertora-05.jpg" data-cap="Piscina, vista nocturna, otro ángulo">
+            <img src="images/lertora/lertora-05.jpg" alt="Piscina, vista nocturna, otro ángulo" loading="lazy">
+            <div class="cap"><span class="t mono">Vista nocturna</span><span class="i mono">05</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-10">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">10</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Enrique Fernández</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Dúplex, PB y alto</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, aluminio, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 2 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/fernandez/fernandez-01.jpg" data-cap="Frente">
+            <img src="images/fernandez/fernandez-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/fernandez/fernandez-02.jpg" data-cap="Frente, otro ángulo">
+            <img src="images/fernandez/fernandez-02.jpg" alt="Frente, otro ángulo" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-11">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">11</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Juan D. Perón</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Showroom, local comercial</span></div>
+            <div><span class="k">Materiales</span><span class="v">Hierro, madera, malla metálica</span></div>
+            <div><span class="k">Ambientes</span><span class="v">2 categorías · 5 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBRA EN CONSTRUCCIÓN -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Obra en construcción</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w5" data-full="images/peronshow/peronshow-01.jpg" data-cap="Divisiones de vidrio y carpintería">
+            <img src="images/peronshow/peronshow-01.jpg" alt="Divisiones de vidrio y carpintería" loading="lazy">
+            <div class="cap"><span class="t mono">Divisiones de vidrio</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w7" data-full="images/peronshow/peronshow-02.jpg" data-cap="Mobiliario a medida">
+            <img src="images/peronshow/peronshow-02.jpg" alt="Mobiliario a medida" loading="lazy">
+            <div class="cap"><span class="t mono">Mobiliario a medida</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ESTANTERÍAS Y EXHIBICIÓN -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Estanterías y exhibición</h2>
+          <span class="count mono">03</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/peronshow/peronshow-03.jpg" data-cap="Estanterías">
+            <img src="images/peronshow/peronshow-03.jpg" alt="Estanterías" loading="lazy">
+            <div class="cap"><span class="t mono">Estanterías</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w5" data-full="images/peronshow/peronshow-04.jpg" data-cap="Estanterías, detalle">
+            <img src="images/peronshow/peronshow-04.jpg" alt="Estanterías, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Estanterías, detalle</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w12" data-full="images/peronshow/peronshow-05.jpg" data-cap="Showroom terminado">
+            <img src="images/peronshow/peronshow-05.jpg" alt="Showroom terminado" loading="lazy">
+            <div class="cap"><span class="t mono">Showroom terminado</span><span class="i mono">05</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-12">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">12</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Chaco</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Galpón y vivienda</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, hierro, hormigón</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 2 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">02</span>
+        </div>
+        <div class="grid">
+          <div class="frame w6" data-full="images/chaco/chaco-01.jpg" data-cap="Frente">
+            <img src="images/chaco/chaco-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w6" data-full="images/chaco/chaco-02.jpg" data-cap="Frente, otro ángulo">
+            <img src="images/chaco/chaco-02.jpg" alt="Frente, otro ángulo" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">02</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-13">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">13</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Santiago Plaul y Guadalupe</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Galpón y vivienda multifamiliar</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, piedra, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 1 fotografía</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">01</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/santiago-plaul-guadalupe/santiago-plaul-guadalupe-01.jpg" data-cap="Frente, esquina">
+            <img src="images/santiago-plaul-guadalupe/santiago-plaul-guadalupe-01.jpg" alt="Frente, esquina" loading="lazy">
+            <div class="cap"><span class="t mono">Frente, esquina</span><span class="i mono">01</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-14">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">14</div>
+        <div class="plate-info">
+          <h2 class="addr">Julián Lagos y República Argentina</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda multifamiliar</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 5 fotografías</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">05</span>
+        </div>
+        <div class="grid">
+          <div class="frame w7" data-full="images/julian-lagos/julian-lagos-01.jpg" data-cap="Frente">
+            <img src="images/julian-lagos/julian-lagos-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+          <div class="frame w5" data-full="images/julian-lagos/julian-lagos-02.jpg" data-cap="Frente, esquina">
+            <img src="images/julian-lagos/julian-lagos-02.jpg" alt="Frente, esquina" loading="lazy">
+            <div class="cap"><span class="t mono">Frente, esquina</span><span class="i mono">02</span></div>
+          </div>
+          <div class="frame w6" data-full="images/julian-lagos/julian-lagos-03.jpg" data-cap="Frente, detalle">
+            <img src="images/julian-lagos/julian-lagos-03.jpg" alt="Frente, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente, detalle</span><span class="i mono">03</span></div>
+          </div>
+          <div class="frame w6" data-full="images/julian-lagos/julian-lagos-04.jpg" data-cap="Frente, detalle">
+            <img src="images/julian-lagos/julian-lagos-04.jpg" alt="Frente, detalle" loading="lazy">
+            <div class="cap"><span class="t mono">Frente, detalle</span><span class="i mono">04</span></div>
+          </div>
+          <div class="frame w12" data-full="images/julian-lagos/julian-lagos-05.jpg" data-cap="Frente, esquina">
+            <img src="images/julian-lagos/julian-lagos-05.jpg" alt="Frente, esquina" loading="lazy">
+            <div class="cap"><span class="t mono">Frente, esquina</span><span class="i mono">05</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-15">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">15</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Santiago Plaul</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Galpón y vivienda</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, aluminio, vidrio</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 1 fotografía</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">01</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/santiago-plaul/santiago-plaul-01.jpg" data-cap="Frente">
+            <img src="images/santiago-plaul/santiago-plaul-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <article id="obra-16">
+
+      <div class="plaque reveal">
+        <div class="plate-num serif">16</div>
+        <div class="plate-info">
+          <h2 class="addr">Calle Warnes</h2>
+          <div class="meta mono">
+            <div><span class="k">Tipología</span><span class="v">Vivienda multifamiliar</span></div>
+            <div><span class="k">Materiales</span><span class="v">Revoque, piedra, hierro</span></div>
+            <div><span class="k">Ambientes</span><span class="v">1 categoría · 1 fotografía</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACHADA -->
+      <section class="category">
+        <div class="category-head reveal">
+          <h2 class="serif">Fachada</h2>
+          <span class="count mono">01</span>
+        </div>
+        <div class="grid">
+          <div class="frame w12" data-full="images/warnes-mini/warnes-mini-01.jpg" data-cap="Frente">
+            <img src="images/warnes-mini/warnes-mini-01.jpg" alt="Frente" loading="lazy">
+            <div class="cap"><span class="t mono">Frente</span><span class="i mono">01</span></div>
+          </div>
+        </div>
+      </section>
+
+    </article>
+
+
+    <footer>
+      <div class="fcredit">
+        <div class="fmark">Obras</div>
+        <div class="fwho">Arquitecta Silvina Castro · <a href="tel:+541140497401">+54 11 4049-7401</a></div>
+      </div>
+      <div class="fnote mono">Cada propiedad se documenta por separado, agrupada por domicilio y por ambiente.</div>
+    </footer>
+
+  </main>
+</div>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox">
+  <div class="lb-bar">
+    <span class="mono" id="lb-index">01 / 35</span>
+    <span class="close mono" id="lb-close">Cerrar ✕</span>
+  </div>
+  <div class="nav prev" id="lb-prev">‹</div>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-caption mono" id="lb-caption"></div>
+  <div class="nav next" id="lb-next">›</div>
+</div>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const navToggle = document.getElementById('navToggle');
+  if(navToggle){
+    navToggle.addEventListener('click', ()=>{
+      const open = sidebar.classList.toggle('nav-open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.querySelectorAll('.index-list .index-item').forEach(a=>{
+      a.addEventListener('click', ()=>{
+        sidebar.classList.remove('nav-open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.frame, .reveal').forEach(el=>io.observe(el));
+
+  const frames = Array.from(document.querySelectorAll('.frame'));
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCap = document.getElementById('lb-caption');
+  const lbIndex = document.getElementById('lb-index');
+  let current = 0;
+
+  function openLB(i){
+    current = i;
+    const f = frames[current];
+    lbImg.src = f.dataset.full;
+    lbCap.textContent = f.dataset.cap || '';
+    lbIndex.textContent = String(current+1).padStart(2,'0') + ' / ' + frames.length;
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLB(){ lb.classList.remove('open'); document.body.style.overflow = ''; }
+  function step(dir){ current = (current + dir + frames.length) % frames.length; openLB(current); }
+
+  frames.forEach((f,i)=> f.addEventListener('click', ()=>openLB(i)));
+  document.getElementById('lb-close').addEventListener('click', closeLB);
+  document.getElementById('lb-prev').addEventListener('click', ()=>step(-1));
+  document.getElementById('lb-next').addEventListener('click', ()=>step(1));
+  lb.addEventListener('click', (e)=>{ if(e.target === lb) closeLB(); });
+
+  document.addEventListener('keydown', (e)=>{
+    if(!lb.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLB();
+    if(e.key === 'ArrowRight') step(1);
+    if(e.key === 'ArrowLeft') step(-1);
+  });
+</script>
+
+</body>
+</html>
